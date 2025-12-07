@@ -19,7 +19,7 @@
             margin: 15px;
             display: inline-block;
             font-size: 20px;
-            color: white;
+            color: black;
             line-height: 120px;
             font-weight: bold;
         }
@@ -40,6 +40,7 @@
     <div id="lot2" class="lot">Lot 2</div>
     <div id="lot3" class="lot">Lot 3</div>
     <div id="lot4" class="lot">Lot 4</div>
+    <div id="lot5" class="lot">Lot 5</div>
 
     <script>
         // ======== Firebase Config (Mon isi yang ni) =========
@@ -72,6 +73,7 @@
         db.ref("parking/lot2").on("value", snap => updateLot("lot2", snap.val()));
         db.ref("parking/lot3").on("value", snap => updateLot("lot3", snap.val()));
         db.ref("parking/lot4").on("value", snap => updateLot("lot4", snap.val()));
+        db.ref("parking/lot5").on("value", snap => updateLot("lot5", snap.val()));
     </script>
 
 </body>

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,8 +27,9 @@
     </style>
 
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
 
 </head>
 <body>
@@ -43,20 +43,21 @@
     <div id="lot5" class="lot">Lot 5</div>
 
     <script>
-        // ======== Firebase Config (Mon isi yang ni) =========
-        const firebaseConfig = {
-            apiKey: "ISI API KEY",
-            authDomain: "ISI",
-            databaseURL: "ISI",
-            projectId: "ISI",
-            storageBucket: "ISI",
-            messagingSenderId: "ISI",
-            appId: "ISI"
-        };
-        // ====================================================
+      const firebaseConfig = {
+        apiKey: "AIzaSyA_y99IxFHkfMjmeUg-VtIBX8tAwH7DlrE",
+        authDomain: "smart-parking-aee.firebaseapp.com",
+        databaseURL: "[https://YOUR_PROJECT.firebaseio.com](https://smart-parking-aee-default-rtdb.asia-southeast1.firebasedatabase.app)",
+        projectId: "smart-parking-aee",
+        storageBucket: "smart-parking-aee.firebasestorage.app",
+        messagingSenderId: "85161961232",
+        appId: "1:85161961232:web:a97b78b55b3e6728eda795"
+      };
 
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+    </script>
+
 
         function updateLot(lotId, status) {
             const card = document.getElementById(lotId);

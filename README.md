@@ -10,6 +10,9 @@
             background: #f4f4f4;
             text-align: center;
             padding: 20px;
+            <h1>Sistem Smart Parking</h1>
+            <p>Status Parking: <span id="parkingData">Loading...</span></p>
+
         }
         .lot {
             width: 120px;
@@ -57,6 +60,21 @@
       const app = firebase.initializeApp(firebaseConfig);
       const database = firebase.database();
     </script>
+    
+  database.ref("/parking/status").on("value", (snapshot) => {
+    const status = snapshot.val();
+    const display = document.getElementById("parkingData");
+
+    if (status === 0) {
+      display.innerText = "Kosong ✅";
+      display.style.color = "green";
+    } else {
+      display.innerText = "Penuh ❌";
+      display.style.color = "red";
+    }
+  });
+</script>
+
 
 
         function updateLot(lotId, status) {

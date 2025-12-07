@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Parking LIVE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .slot {
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .occupied {
+      background: #e74c3c; /* merah */
+    }
+
+    .empty {
+      background: #2ecc71; /* hijau */
+    }
+  </style>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+</head>
+<body>
+
+<h1>Smart Parking LIVE Status</h1>
+
+<div class="grid">
+  <div id="slot1" class="slot">Slot 1</div>
+  <div id="slot2" class="slot">Slot 2</div>
+  <div id="slot3" class="slot">Slot 3</div>
+  <div id="slot4" class="slot">Slot 4</div>
+  <div id="slot5" class="slot">Slot 5</div>
+</div>
+
+<script>
+
+  // ====== MASUKKAN FIREBASE CONFIG MON DI SINI ======
+  const firebaseConfig = {
+    apiKey: "XXX",
+    authDomain: "smart-parking-aee.firebaseapp.com",
+    databaseURL: "https://smart-parking-aee-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "smart-parking-aee",
+    storageBucket: "smart-parking-aee.appspot.com",
+    messagingSenderId: "XXX",
+    appId: "XXX"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  // LIVE UPDATE PARKING
+  const db = firebase.database().ref("parking");
+
+  db.on("value", (snapshot) => {
+    let data = snapshot.val();
+
+    for (let slot in data) {
+      let div = document.getElementById(slot);
+      div.className = "slot " + data[slot].status;
+      div.innerHTML = slot.toUpperCase() + "<br>" + data[slot].status;
+    }
+  });
+
+</script>
+</body>
+</html>
